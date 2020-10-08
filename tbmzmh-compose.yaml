@@ -15,7 +15,7 @@ services:
     restart: always
     ports:
       - 8778:80/tcp
-      - 9000:9000/tcp
+      - 9118:9000/tcp
     environment: 
       #- TZ="America/Kentucky/Louisville"
       - SHMEM="50%"
