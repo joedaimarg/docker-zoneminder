@@ -1,8 +1,5 @@
 # Build docker image
-docker build -t zmh-ubuntu -f Dockerfile .
+docker build -t tbmzmh -f Dockerfile .
 
 # Run image
-docker run -d --name zmh-ubuntu -it zmh-ubuntu
-
-# Access container
-docker exec -it zmh-ubuntu bash
+docker-compose -f ./tbmzmh-compose.yaml up -d
