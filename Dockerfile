@@ -11,8 +11,8 @@ ENV	DEBCONF_NONINTERACTIVE_SEEN="true" \
 	LANGUAGE="en_US.UTF-8" \
 	TZ="Etc/UTC" \
 	TERM="xterm" \
-	PHP_VERS="7.4" \
-	ZM_VERS="1.34" \
+	PHP_VERS="7.2" \
+	ZM_VERS="master" \
 	SHMEM="50%" \
 	PUID="99" \
 	PGID="100"
@@ -31,8 +31,12 @@ RUN	add-apt-repository -y ppa:iconnor/zoneminder-$ZM_VERS && \
 	apt-get -y install ssmtp mailutils net-tools wget sudo make && \
 	apt-get -y install php$PHP_VERS php$PHP_VERS-fpm libapache2-mod-php$PHP_VERS php$PHP_VERS-mysql php$PHP_VERS-gd && \
 	apt-get -y install libcrypt-mysql-perl libyaml-perl libjson-perl libavutil-dev ffmpeg && \
-	apt-get -y install --no-install-recommends libvlc-dev libvlccore-dev vlc && \
-	apt-get -y install zoneminder
+	apt-get -y install --no-install-recommends libvlc-dev libvlccore-dev vlc
+
+# Bypass caching for zminstall
+ARG PASS_CACHE=1
+# Install zm
+RUN	apt-get -y install zoneminder
 	
 FROM build1 as build2
 RUN	rm /etc/mysql/my.cnf && \
