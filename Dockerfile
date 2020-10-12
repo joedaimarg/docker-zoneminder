@@ -13,7 +13,7 @@ ENV	DEBCONF_NONINTERACTIVE_SEEN="true" \
 	TERM="xterm"
 
 ENV	PHP_VERS="7.4" \
-	ZM_VERS="1.34" \
+	ZM_VERS="master" \
 	SHMEM="50%" \
 	PUID="99" \
 	PGID="100"
@@ -32,6 +32,9 @@ RUN	add-apt-repository -y ppa:iconnor/zoneminder-$ZM_VERS && \
 	apt-get -y install libcrypt-mysql-perl libyaml-perl libjson-perl libavutil-dev && \
 	apt-get -y install --no-install-recommends libvlc-dev libvlccore-dev vlc
 
+# Bypass caching for zminstall
+ARG PASS_CACHE=1
+# Install zm
 RUN	apt-get -y install zoneminder
 	
 RUN	rm /etc/mysql/my.cnf && \

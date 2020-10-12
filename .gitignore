@@ -2,7 +2,7 @@
 packages/cuda-repo-ubuntu1804-10-1-local-10.1.168-418.67_1.0-1_amd64.deb
 .gitattributes
 !./host
-./host/*
+host/*
 !./host/.gitkeep
 !./host/tbmTmp/.gitkeep
 !./host/data/.gitkeep
