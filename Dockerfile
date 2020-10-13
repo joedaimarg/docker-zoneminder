@@ -26,7 +26,7 @@ RUN	add-apt-repository -y ppa:iconnor/zoneminder-$ZM_VERS && \
 	apt-get update && \
 	apt-get -y upgrade -o Dpkg::Options::="--force-confold" && \
 	apt-get -y dist-upgrade -o Dpkg::Options::="--force-confold" && \
-	apt-get -y install apache2 mariadb-server && \
+	apt-get -y install apache2 mariadb-server gdebi && \
 	apt-get -y install ssmtp mailutils net-tools wget sudo make && \
 	apt-get -y install php$PHP_VERS php$PHP_VERS-fpm libapache2-mod-php$PHP_VERS php$PHP_VERS-mysql php$PHP_VERS-gd && \
 	apt-get -y install libcrypt-mysql-perl libyaml-perl libjson-perl libavutil-dev && \
@@ -35,7 +35,12 @@ RUN	add-apt-repository -y ppa:iconnor/zoneminder-$ZM_VERS && \
 # Bypass caching for zminstall
 ARG PASS_CACHE=1
 # Install zm
-RUN	apt-get -y install zoneminder
+# RUN	apt-get -y install zoneminder
+RUN echo '%adm ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN mkdir -p /home/zmh/
+COPY zoneminder_*.deb /home/zmh/
+WORKDIR /home/zmh/
+RUN sudo gdebi zoneminder_*.deb --n
 	
 RUN	rm /etc/mysql/my.cnf && \
 	cp /etc/mysql/mariadb.conf.d/50-server.cnf /etc/mysql/my.cnf && \
