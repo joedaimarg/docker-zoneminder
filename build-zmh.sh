@@ -16,7 +16,7 @@ fi
 sudo apt-get update
 
 # Build the latest master snapshot
-./$FILE --snapshot=NOW --branch=zmh --type=fork --fork=joedaimarg --interactive=no
+./$FILE --snapshot=NOW --branch=zmh-dev --type=fork --fork=joedaimarg --interactive=no
 
 # Build image
 docker build --build-arg PASS_CACHE="$(date)" -t tbmzmh -f Dockerfile .
