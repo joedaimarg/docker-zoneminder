@@ -1,15 +1,6 @@
 # Use root/example as user/password credentials
 version: '2.0'
 services:
-  db:
-    image: mariadb
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      #- TZ="America/Kentucky/Louisville"
-    volumes:
-      - "/etc/timezone:/etc/timezone:ro"
-      - "/etc/localtime:/etc/localtime:ro"
   zm:
     image: tbmzmh
     restart: always
