@@ -39,7 +39,7 @@ ARG PASS_CACHE=1
 # RUN	apt-get -y install zoneminder
 RUN echo '%adm ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN mkdir -p /home/zmh/
-COPY zoneminder_*.deb /home/zmh/
+COPY ./zmh/zoneminder_*.deb /home/zmh/
 WORKDIR /home/zmh/
 RUN sudo gdebi zoneminder_*.deb --n
 	
