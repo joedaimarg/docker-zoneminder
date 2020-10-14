@@ -1,0 +1,7 @@
+# Use root/example as user/password credentials
+version: '2.0'
+services:
+  zmdeb:
+    image: zmhdeb
+    volumes:
+      - ".:/home/zmh:rw"
