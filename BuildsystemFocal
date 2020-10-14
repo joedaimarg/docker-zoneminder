@@ -117,11 +117,11 @@ ARG PASS_CACHE=1
 
 RUN wget https://raw.githubusercontent.com/joedaimarg/zoneminder/zmh/utils/do_debian_package.sh
 
-RUN chmod a+x do_debian_package.sh
+RUN chmod a+x ./do_debian_package.sh
 
 RUN sudo apt-get update
 
-RUN do_debian_package.sh --snapshot=NOW --branch=zmh-dev --type=fork --fork=joedaimarg --interactive=no
+RUN ./do_debian_package.sh --snapshot=NOW --branch=zmh-dev --type=fork --fork=joedaimarg --interactive=no
 
 VOLUME \
 	["/home/zmh"]
