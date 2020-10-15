@@ -92,7 +92,7 @@ RUN apt-get update && apt-get install -y \
     python-requests python-roman python-six python-sphinx python-typing \
     python-tz python-urllib3 python2.7 python2.7-minimal python3-distutils \
     python3-lib2to3 sgml-base shared-mime-info sphinx-common tzdata uuid-dev \
-    x11-common xkb-data xml-core zlib1g-dev
+    x11-common xkb-data xml-core zlib1g-dev libvncserver-dev
 
 # Enable sudo without password
 RUN echo '%adm ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
