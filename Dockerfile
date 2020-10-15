@@ -10,8 +10,9 @@ ENV	DEBCONF_NONINTERACTIVE_SEEN="true" \
 	LANG="en_US.UTF-8" \
 	LANGUAGE="en_US.UTF-8" \
 	TZ="Etc/UTC" \
-	TERM="xterm" \
-	PHP_VERS="7.2" \
+	TERM="xterm"
+
+ENV	PHP_VERS="7.2" \
 	ZM_VERS="master" \
 	SHMEM="50%" \
 	PUID="99" \
