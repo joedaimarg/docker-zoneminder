@@ -19,14 +19,14 @@
 #./$FILE --snapshot=NOW --branch=zmh-dev --type=fork --fork=joedaimarg --interactive=no
 
 # Build installer
-docker build --build-arg PASS_CACHE="$(date)" -t zmhdeb -f BuildsystemBionic .
+docker build --no-cache --build-arg PASS_CACHE="$(date)" -t zmhdeb -f BuildsystemBionic .
 docker run -d --restart=always --name zmhdeb -ti zmhdeb
 docker cp zmhdeb:/home/zmh . 
 docker stop zmhdeb
 docker rm zmhdeb
 
 # Build image
-docker build --build-arg PASS_CACHE="$(date)" -t tbmzmh -f Dockerfile .
+docker build --no-cache --build-arg PASS_CACHE="$(date)" -t tbmzmh -f Dockerfile .
 
 # Clean up build
 #rm -rf zoneminder_* && rm -rf do_debian_package.sh* && rm -rf zoneminder-d*
